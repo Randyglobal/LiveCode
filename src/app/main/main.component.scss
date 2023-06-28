@@ -1,0 +1,83 @@
+button {
+    background: white;
+    color: rgb(0, 149, 255);
+}
+
+.banner {
+    background: red;
+}
+
+.form-control {
+    width: 400px;
+    height: 450px;
+    border: 1px solid gray;
+
+    h1 {
+        text-align: center;
+
+    }
+
+    form {
+        color: rgb(152, 152, 152);
+
+        label {
+            font-size: 20px;
+        }
+
+        margin-left: 20px;
+
+        .form-option {
+            display: flex;
+            // background: red;
+
+                .df {
+                    width: 80%;
+                    border: 1px solid gray;
+                    border-radius: 5px;
+                    font-size: 17px;
+                    outline: none;
+                }
+            }
+        }
+        .form-label {
+            width: 100%;
+            // background: blue;
+            margin-top: 20px;
+        }
+
+        select{
+            padding: 9px;
+            font-size: 17px;
+            outline: none;
+            border: 1px solid gray;
+            border-radius: 5px;
+            width: 90%;
+        }
+        .difficulty{
+            width: 95%;
+        }
+        input {
+            padding: 9px;
+            outline: none;
+            font-size: 17px;
+            border-radius: 5px;
+            outline: none;
+            border: 1px solid gray;
+
+
+        }
+
+        .name {
+            width: 90%;
+        }
+        .button{
+            width: 95%;
+            display: flex;
+            justify-content: space-between;
+            
+            .cancel{
+                color: red;
+            }
+        }
+
+    }

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "king-fire-c6c42": {
+      "hosting": {
+        "Tasky": [
+          "king-fire-c6c42"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "king-fire-c6c42"
+  }
+}

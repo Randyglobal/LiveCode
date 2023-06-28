@@ -1,0 +1,59 @@
+<div class="container">
+
+    <button>
+        Add +
+    </button>
+
+    <!-- <div class="container banner">
+        
+    </div> -->
+    <div class="form-control">
+        <h1>Add Task</h1>
+        <form #addForm="ngForm" (ngSubmit)="addData(addForm.value)">
+            <div class="form-label">
+                <label for="">Task Name</label><br>
+                <input type="text" name="taskName" ngModel class="name">
+            </div>
+            <div class="form-option">
+                <div class="form-label">
+                    <label for="">Status</label><br>
+                    <select name="status" ngModel>
+                     <option *ngFor="let value of status" [value]="value" >
+                      {{value | titlecase}}
+                     </option>
+                    </select>
+                </div>
+                <div class="form-label">
+                    <label for="">Level</label><br>
+                    <select name="level" ngModel>
+                     <option *ngFor="let value of level" [value]="value">
+                        {{value | titlecase}}
+                     </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-label">
+                <label for="">Difficulty</label><br>
+                <select name="difficulty" ngModel class="difficulty">
+                    <option *ngFor="let value of difficulty" [value]="value">
+                        {{value | titlecase}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-option">
+                <div class="form-label">
+                    <label for="">Start Date</label><br>
+                    <input type="date" name="startDate" ngModel class="df">
+                </div>
+                <div class="form-label">
+                    <label for="">Due Date</label><br>
+                    <input type="date" name="duedate" ngModel class="df">
+                </div>
+                
+            </div>
+            <div class="form-label button">
+                <button type="submit">Save</button>
+             </div>
+        </form>
+    </div>
+</div>
