@@ -1,5 +1,5 @@
 export const environment = {
-  production: true,
+  production: false,
   firebase: {
     projectId: 'king-fire-c6c42',
     appId: '1:839240727685:web:a4c3496e6546ebc7d77dec',

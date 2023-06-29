@@ -11,9 +11,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class MainComponent {
 
+  addPop = false
 taskForm: FormGroup
 
-  taskId = new Date().getDate()
+  taskId = new Date().getTime().toString()
   constructor(private store: StoreUerService, public firestore: Firestore, private formGroup: FormBuilder){
 
   this.taskForm = this.formGroup.group(
@@ -62,5 +63,11 @@ taskForm: FormGroup
     .catch((error) => {
      alert('Opps an error occured => ' + error)
     })
+   }
+
+   popUp(){
+    this.addPop = !this.addPop
+   alert("ID"+ this.taskId)
+    
    }
 }

@@ -9,5 +9,6 @@ export interface ITask{
 }
 export interface INotes{
     title: string,
-    content: string
+    content: string,
+    id: number
 }
