@@ -1,12 +1,13 @@
 <div class="container">
+    <div class="buttons">
+        <button (click)="popUp()" class="button">
+            Add +
+        </button>
+        <button (click)="getData()" class="button">
+            View Task
+        </button>
+    </div>
 
-    <button (click)="popUp()">
-        Add +
-    </button>
-
-    <!-- <div class="container banner">
-        
-    </div> -->
     <div class="">
         <div *ngIf="addPop" class="wrapper">
 
@@ -50,7 +51,7 @@
                         </div>
                         <div class="form-label">
                             <label for="">Due Date</label><br>
-                            <input type="date" name="duedate" ngModel class="df">
+                            <input type="date" name="dueDate" ngModel class="df">
                         </div>
                     </div>
                     <div class="form-label button">
@@ -58,6 +59,25 @@
                         <button (click)="popUp()" class="cancel">Cancel</button>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+    <div class="context">
+        <div *ngFor="let i = index; let item of data" (click)="gettData(item.id)" class="view-task">
+            <p class="head">Task Number: {{i}}</p>
+            <p>Task Name: {{item.taskName | titlecase}}</p>
+            <p>Status: {{item.status | titlecase}}</p>
+            <p>Difficulty: {{item.difficulty | titlecase}}</p>
+            <p>Level: {{item.level | titlecase}}</p>
+            <p>Start Date: {{item.startDate}}</p>
+            <p>Due Date: {{item.dueDate}}</p>
+            <div class="buttons">
+                <button mat-icon-button color="primary">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="deleteTask(item.id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
             </div>
         </div>
     </div>

@@ -13,10 +13,12 @@ button{
     border: 1px solid rgb(198, 198, 198);
     border-radius: 5px;
     cursor: pointer;
+    outline: none;
 }
 .container{
     width: 90%;
     height: 90vh;
     margin: 20px auto;
+    box-sizing: border-box;
     // background: red;
 }

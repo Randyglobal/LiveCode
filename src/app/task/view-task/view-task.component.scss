@@ -1,0 +1,9 @@
+.container{
+     display: flex;
+    .view-task{
+        width: 200px;
+        height: 300px;
+        box-shadow: 1px 2px 1px 2px black;
+        margin-left: 20px;
+    }
+}

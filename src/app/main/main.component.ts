@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { StoreUerService } from '../service/store/store-uer.service';
 import { ITask } from '../interface/task.interface';
-import { Firestore, addDoc, collection } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, deleteDoc, doc, getDocs } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -33,13 +33,15 @@ taskForm: FormGroup
     status: string[] = [
       'pending',
       'success',
-      'paused'
+      'paused',
+      'not started'
   
     ];
     difficulty: string[] = [
       'very hard',
       'medium',
-      'easy'
+      'easy',
+      'not determined'
   
     ];
     level: string[] = [
@@ -48,6 +50,19 @@ taskForm: FormGroup
       'in progress'
   
     ]
+    // For the View
+    public data: any = [];
+  taskProperty: string[] = [
+    'id',
+     'taskName', 
+     'status', 
+     'difficulty',
+     'level',
+      'startDate',
+      'dueDate'
+  ]
+
+  displayTask: string[] = ['id', 'taskName', 'status', 'difficulty','level', 'startDate','dueDate'];
 
   // addTask(){
   //   this.store.addTask(this.tasks)
@@ -67,7 +82,38 @@ taskForm: FormGroup
 
    popUp(){
     this.addPop = !this.addPop
-   alert("ID"+ this.taskId)
+  //  alert("ID"+ this.taskId)
     
    }
+
+  gettData(id: string){
+    const addData = collection(this.firestore, 'ITask', id);
+    getDocs(addData)
+    .then((respond) => {
+      alert('Data Gotten')
+      this.data = [...respond.docs.map((item) =>{
+        return{ ...item.data(), id: item.id}})]
+    })
+  }
+  getData(){
+    const addData = collection(this.firestore, 'ITask');
+    getDocs(addData)
+    .then((respond) => {
+      // alert('Data Gotten')
+      this.data = [...respond.docs.map((item) =>{
+        return{ ...item.data(), id: item.id}})]
+    })
+  }
+  deleteTask(id: string){
+    const dataDelete = doc(this.firestore, 'ITask', id);
+    deleteDoc(dataDelete) 
+     .then(()=>{
+  window.location.reload()
+      alert('Task Deleted')
+      this.getData
+     })
+     .catch((err)=>{
+       alert(err)
+     })
+  }
 }

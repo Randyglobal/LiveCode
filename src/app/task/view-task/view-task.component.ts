@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Firestore, collection, getDocs } from '@angular/fire/firestore';
+import { Firestore, collection, deleteDoc, doc, getDocs } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-view-task',
@@ -14,15 +14,15 @@ export class ViewTaskComponent {
   public data: any = [];
   taskProperty: string[] = [
     'id',
-     'Name', 
-     'Status', 
-     'Difficulty',
-     'Level',
-      'StartDate',
-      'DueDate'
+     'taskName', 
+     'status', 
+     'difficulty',
+     'level',
+      'startDate',
+      'dueDate'
   ]
 
-  displayTask: string[] = ['id', 'Name', 'Status', 'Difficulty','Level', 'StartDate','DueDate'];
+  displayTask: string[] = ['id', 'taskName', 'status', 'difficulty','level', 'startDate','dueDate'];
 
   gettData(id: string){
     const addData = collection(this.firestore, 'ITask', id);
@@ -32,5 +32,26 @@ export class ViewTaskComponent {
       this.data = [...respond.docs.map((item) =>{
         return{ ...item.data(), id: item.id}})]
     })
+  }
+  getData(){
+    const addData = collection(this.firestore, 'ITask');
+    getDocs(addData)
+    .then((respond) => {
+      // alert('Data Gotten')
+      this.data = [...respond.docs.map((item) =>{
+        return{ ...item.data(), id: item.id}})]
+    })
+  }
+  deleteTask(id: string){
+    const dataDelete = doc(this.firestore, 'ITask', id);
+    deleteDoc(dataDelete) 
+     .then(()=>{
+  // window.location.reload()
+      alert('Task Deleted')
+      this.getData
+     })
+     .catch((err)=>{
+       alert(err)
+     })
   }
 }

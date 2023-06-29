@@ -1,1 +1,64 @@
-<p>view-task works!</p>
+<button (click)="getData()">
+    View
+</button>
+<!-- <table>
+    <tr style="margin-left: 30rem;">
+     <th>Id</th>
+     <th>Task Name</th>
+     <th> Status</th>
+     <th> Difficulty</th>
+     <th>Level</th>
+     <th>Start Date</th>
+     <th>Due Date</th>
+     <th>Action</th>
+    </tr>
+    <tr *ngFor="let i = index; let item of data" (click)="gettData(item.id)">
+     <td>{{i}}</td>
+     <td> {{item.taskName | titlecase}} </td>
+     <td> {{item.status | titlecase}} </td>
+     <td> {{item.difficulty | titlecase}} </td>
+     <td> {{item.level | titlecase}} </td>
+     <td> {{item.startDate}} </td>
+     <td> {{item.dueDate}} </td>
+
+     <td> 
+         <button mat-icon-button color="primary">
+             <mat-icon>edit</mat-icon>
+           </button>
+           <button mat-icon-button color="warn" (click)="deleteTask(item.id)">
+             <mat-icon>delete</mat-icon>
+           </button>
+     </td>
+    </tr> -->
+
+<!-- <ng-container matColumnDef="action">
+         <button mat-icon-button color="primary">
+           <mat-icon>edit</mat-icon>
+         </button>
+         <button mat-icon-button color="warn">
+           <mat-icon>delete</mat-icon>
+         </button>
+     </ng-container> -->
+
+<!-- <tr mat-header-row *matHeaderRowDef="displayTask"></tr>
+     <tr mat-row *matRowDef="let row; columns: displayTask;"></tr> -->
+<!-- </table> -->
+<div class="container">
+    <div *ngFor="let i = index; let item of data" (click)="gettData(item.id)" class="view-task">
+        <p>{{i}}</p>
+        <p> {{item.taskName | titlecase}}</p>
+        <p>{{item.status | titlecase}}</p>
+        <p>{{item.difficulty | titlecase}}</p>
+        <p>{{item.level | titlecase}}</p>
+        <p>{{item.startDate}}</p>
+        <p> {{item.dueDate}}</p>
+        <div class="button">
+            <button mat-icon-button color="primary">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deleteTask(item.id)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
