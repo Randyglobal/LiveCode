@@ -12,6 +12,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class MainComponent {
 
   addPop = false
+  Popup = false
+
 taskForm: FormGroup
 
   taskId = new Date().getTime().toString()
@@ -52,21 +54,7 @@ taskForm: FormGroup
     ]
     // For the View
     public data: any = [];
-  taskProperty: string[] = [
-    'id',
-     'taskName', 
-     'status', 
-     'difficulty',
-     'level',
-      'startDate',
-      'dueDate'
-  ]
-
-  displayTask: string[] = ['id', 'taskName', 'status', 'difficulty','level', 'startDate','dueDate'];
-
-  // addTask(){
-  //   this.store.addTask(this.tasks)
-  // }
+    
   addData(value: any) {
     // this.storage.addTask(this.task);
     const addTasks = collection(this.firestore, 'ITask');
@@ -82,6 +70,11 @@ taskForm: FormGroup
 
    popUp(){
     this.addPop = !this.addPop
+  //  alert("ID"+ this.taskId)
+    
+   }
+   pop(){
+    this.Popup = !this.Popup
   //  alert("ID"+ this.taskId)
     
    }
@@ -102,7 +95,9 @@ taskForm: FormGroup
       // alert('Data Gotten')
       this.data = [...respond.docs.map((item) =>{
         return{ ...item.data(), id: item.id}})]
-    })
+       console.log(this.data);
+
+    })    
   }
   deleteTask(id: string){
     const dataDelete = doc(this.firestore, 'ITask', id);
@@ -116,4 +111,13 @@ taskForm: FormGroup
        alert(err)
      })
   }
+//   editData(id: string){
+//     const addData = collection(this.firestore, 'ITask', id);
+//     getDocs(addData)
+//     .then((respond) => {
+//       alert('Data Gotten')
+//       this.data = [...respond.docs.map((item) =>{
+//         return{ ...item.data(), id: item.id}})]
+//     })
+//   }
 }

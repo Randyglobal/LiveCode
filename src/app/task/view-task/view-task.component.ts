@@ -30,7 +30,7 @@ export class ViewTaskComponent {
     .then((respond) => {
       alert('Data Gotten')
       this.data = [...respond.docs.map((item) =>{
-        return{ ...item.data(), id: item.id}})]
+        return{ ...item.data(), id: item.id}})]        
     })
   }
   getData(){
@@ -41,6 +41,7 @@ export class ViewTaskComponent {
       this.data = [...respond.docs.map((item) =>{
         return{ ...item.data(), id: item.id}})]
     })
+    console.log(this.data);
   }
   deleteTask(id: string){
     const dataDelete = doc(this.firestore, 'ITask', id);
