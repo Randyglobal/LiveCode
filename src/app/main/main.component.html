@@ -68,7 +68,7 @@
     <!-- view -->
     <div class="context">
         <div *ngFor="let i = index; let item of data" class="view-task">
-            <p class="head">Task Number: {{i}}</p>
+            <p class="head">Task Number: {{i+1}}</p>
             <p>Task Name: {{item.taskName | titlecase}}</p>
             <p>Status: {{item.status | titlecase}}</p>
             <p>Difficulty: {{item.difficulty | titlecase}}</p>
