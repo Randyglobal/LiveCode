@@ -3,11 +3,13 @@
         <button (click)="popUp()" class="button">
             Add +
         </button>
-        <button (click)="getData()" class="button">
+        <!-- <button (click)="getData()" class="button">
             View Task
-        </button>
+        </button> -->
     </div>
-<!-- add -->
+    <div class="view-task">
+    </div>
+    <!-- add -->
     <div class="">
         <div *ngIf="addPop" class="wrapper">
 
@@ -64,7 +66,7 @@
     </div>
     <!-- view -->
     <div class="context">
-        <div *ngFor="let i = index; let item of data" (click)="gettData(item.id)" class="view-task">
+        <div *ngFor="let i = index; let item of data" class="view-task">
             <p class="head">Task Number: {{i}}</p>
             <p>Task Name: {{item.taskName | titlecase}}</p>
             <p>Status: {{item.status | titlecase}}</p>
@@ -87,7 +89,7 @@
 <div class="">
     <div *ngIf="Popup" class="wrapper">
 
-        <div class="form-control"> 
+        <div class="form-control">
             <h1>Update Task</h1>
             <form>
                 <div class="form-label">

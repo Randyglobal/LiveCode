@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { StoreUerService } from '../service/store/store-uer.service';
 import { ITask } from '../interface/task.interface';
 import { Firestore, addDoc, collection, deleteDoc, doc, getDocs } from '@angular/fire/firestore';
@@ -9,11 +9,13 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent {
+export class MainComponent implements OnInit{
 
+  // Popups for add and edit
   addPop = false
   Popup = false
 
+  // for the forms
 taskForm: FormGroup
 
   taskId = new Date().getTime().toString()
@@ -31,7 +33,7 @@ taskForm: FormGroup
     })
   }
 
-
+// For the ststus, level and difficulty
     status: string[] = [
       'pending',
       'success',
@@ -52,16 +54,23 @@ taskForm: FormGroup
       'in progress'
   
     ]
+
     // For the View
-    public data: any = [];
+    public data: any = [ ];
     
+    // when you add to firestore
   addData(value: any) {
     // this.storage.addTask(this.task);
     const addTasks = collection(this.firestore, 'ITask');
     addDoc(addTasks, value)
+    // helps get the data when added
+    getDocs(addTasks)
     .then((respond)=> {
+      this.data = [...respond.docs.map((item) =>{
+          return{ ...item.data(), id: item.id}})]
      alert('Added Task Successfully')
-     window.location.reload()
+    this.addPop = !this.addPop
+    //  window.location.reload()
     })
     .catch((error) => {
      alert('Opps an error occured => ' + error)
@@ -79,31 +88,45 @@ taskForm: FormGroup
     
    }
 
-  gettData(id: string){
-    const addData = collection(this.firestore, 'ITask', id);
-    getDocs(addData)
-    .then((respond) => {
-      alert('Data Gotten')
-      this.data = [...respond.docs.map((item) =>{
-        return{ ...item.data(), id: item.id}})]
-    })
-  }
+  // gettData(id: string){
+  //   const addData = collection(this.firestore, 'ITask', id);
+  //   getDocs(addData)
+  //   .then((respond) => {
+  //     alert('Data Gotten')
+  //     this.data = [...respond.docs.map((item) =>{
+  //       return{ ...item.data(), id: item.id}})]
+  //   })
+  // }
+
+  // getting data
   getData(){
     const addData = collection(this.firestore, 'ITask');
     getDocs(addData)
     .then((respond) => {
       // alert('Data Gotten')
-      this.data = [...respond.docs.map((item) =>{
+      this.data = 
+       [...respond.docs.map((item) =>{
         return{ ...item.data(), id: item.id}})]
        console.log(this.data);
-
     })    
+  }
+  // Helps the view to stay on the page
+  ngOnInit(): void {
+    const addData = collection(this.firestore, 'ITask');
+    getDocs(addData)
+    .then((respond) => {
+      // alert('Data Gotten')
+      this.data = 
+       [...respond.docs.map((item) =>{
+        return{ ...item.data(), id: item.id}})]
+       console.log(this.data);
+    }) 
   }
   deleteTask(id: string){
     const dataDelete = doc(this.firestore, 'ITask', id);
     deleteDoc(dataDelete) 
      .then(()=>{
-  window.location.reload()
+       window.location.reload()
       alert('Task Deleted')
       this.getData
      })
@@ -111,13 +134,6 @@ taskForm: FormGroup
        alert(err)
      })
   }
-//   editData(id: string){
-//     const addData = collection(this.firestore, 'ITask', id);
-//     getDocs(addData)
-//     .then((respond) => {
-//       alert('Data Gotten')
-//       this.data = [...respond.docs.map((item) =>{
-//         return{ ...item.data(), id: item.id}})]
-//     })
-//   }
+
+ 
 }
