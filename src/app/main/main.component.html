@@ -11,6 +11,7 @@
     </div>
     <!-- add -->
     <div class="">
+        <!-- Template driven approach -->
         <div *ngIf="addPop" class="wrapper">
 
             <div class="form-control">
@@ -75,7 +76,7 @@
             <p>Start Date: {{item.startDate}}</p>
             <p>Due Date: {{item.dueDate}}</p>
             <div class="buttons">
-                <button mat-icon-button color="primary" (click)="pop()">
+                <button mat-icon-button color="primary" (click)="editTask(item.id)">
                     <mat-icon>edit</mat-icon>
                 </button>
                 <button mat-icon-button color="warn" (click)="deleteTask(item.id)">
