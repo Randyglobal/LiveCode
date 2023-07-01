@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./main.component.scss','./mobile.component.scss']
 })
 export class MainComponent implements OnInit{
 
