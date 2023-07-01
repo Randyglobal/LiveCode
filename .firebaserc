@@ -1,4 +1,7 @@
 {
+  "projects": {
+    "default": "tasky4izylife"
+  },
   "targets": {
     "king-fire-c6c42": {
       "hosting": {
@@ -8,7 +11,5 @@
       }
     }
   },
-  "projects": {
-    "default": "king-fire-c6c42"
-  }
+  "etags": {}
 }

@@ -1,12 +1,12 @@
 export const environment = {
   production: false,
   firebase: {
-    projectId: 'king-fire-c6c42',
-    appId: '1:839240727685:web:a4c3496e6546ebc7d77dec',
-    storageBucket: 'king-fire-c6c42.appspot.com',
-    apiKey: 'AIzaSyDzijT0qc8UJ_9QPqKUpE_5YGKdJ-SSms4',
-    authDomain: 'king-fire-c6c42.firebaseapp.com',
-    messagingSenderId: '839240727685',
-    measurementId: 'G-EQC6ENR6JS',
+    apiKey: "AIzaSyDd_svPouzc-XE9fytllVgyIpsRm02xyxg",
+    authDomain: "tasky4izylife.firebaseapp.com",
+    projectId: "tasky4izylife",
+    storageBucket: "tasky4izylife.appspot.com",
+    messagingSenderId: "533637052698",
+    appId: "1:533637052698:web:b8925af00744931ee654a3",
+    measurementId: "G-7GQS5HS6FQ"
   },
 };
